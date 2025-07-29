@@ -1,0 +1,86 @@
+jenkins:
+  clouds:
+  - amazonEC2:
+      name: "CloudCampAWS"
+      region: "us-east-1"
+      sshKeysCredentialsId: "JenkinsLeaderPem"
+      templates:
+      - ami: "ami-04da39936a45cd166"
+        amiType:
+          unixData:
+            sshPort: "22"
+        associatePublicIp: true
+        connectBySSHProcess: true
+        connectionStrategy: PRIVATE_IP
+        deleteRootOnTermination: false
+        description: "BasicWorker"
+        ebsEncryptRootVolume: DEFAULT
+        ebsOptimized: false
+        enclaveEnabled: false
+        hostKeyVerificationStrategy: CHECK_NEW_SOFT
+        idleTerminationMinutes: "15"
+        javaPath: "java"
+        labelString: "jdk17 linux x86"
+        maxTotalUses: -1
+        metadataEndpointEnabled: true
+        metadataHopsLimit: 1
+        metadataSupported: true
+        metadataTokensRequired: false
+        minimumNumberOfInstances: 0
+        minimumNumberOfSpareInstances: 0
+        mode: NORMAL
+        monitoring: false
+        numExecutors: 1
+        remoteAdmin: "ubuntu"
+        securityGroups: "Jenkins-Worker-CloudCamp"
+        stopOnTerminate: true
+        subnetId: "subnet-01ea2bc6765db43b7"
+        t2Unlimited: false
+        tags:
+        - name: "owner"
+          value: "daviddager"
+        - name: "bootcamp"
+          value: "devops"
+        tenancy: Default
+        type: "t2.micro"
+        useEphemeralDevices: false
+      - ami: "ami-0a80d40a1273ab5a1"
+        amiType:
+          unixData:
+            sshPort: "22"
+        associatePublicIp: true
+        connectBySSHProcess: true
+        connectionStrategy: PRIVATE_IP
+        deleteRootOnTermination: false
+        description: "TerraformWorker"
+        ebsEncryptRootVolume: DEFAULT
+        ebsOptimized: false
+        enclaveEnabled: false
+        hostKeyVerificationStrategy: CHECK_NEW_SOFT
+        idleTerminationMinutes: "15"
+        javaPath: "java"
+        labelString: "terraform1.12 jdk17 linux x86"
+        maxTotalUses: -1
+        metadataEndpointEnabled: true
+        metadataHopsLimit: 1
+        metadataSupported: true
+        metadataTokensRequired: false
+        minimumNumberOfInstances: 0
+        minimumNumberOfSpareInstances: 0
+        mode: NORMAL
+        monitoring: false
+        numExecutors: 1
+        remoteAdmin: "ubuntu"
+        securityGroups: "Jenkins-Worker-CloudCamp"
+        stopOnTerminate: true
+        subnetId: "subnet-01ea2bc6765db43b7"
+        t2Unlimited: false
+        tags:
+        - name: "owner"
+          value: "edisonw"
+        - name: "bootcamp"
+          value: "devops"
+        tenancy: Default
+        type: "t2.micro"
+        useEphemeralDevices: false        
+      useInstanceProfileForCredentials: true
